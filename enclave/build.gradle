@@ -1,0 +1,13 @@
+plugins {
+    id 'com.r3.conclave.enclave'
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:$jupiterVersion"
+}
+
+// See https://docs.conclave.net/enclave-configuration.html for details on how to configure the enclave.
+conclave {
+    productID = 1
+    revocationLevel = 0
+}

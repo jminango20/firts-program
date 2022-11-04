@@ -1,0 +1,34 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10' apply false
+}
+
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: "org.jetbrains.kotlin.jvm"
+
+    idea {
+        module {
+            downloadJavadoc = true
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    // Configure the entire project to use Java 17. This will also apply to Kotlin. Change this value if you want to use
+    // another version.
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    tasks.withType(Test) {
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
+}
